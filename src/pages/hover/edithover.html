@@ -1,0 +1,42 @@
+<div style="width:400px">
+  <div style="padding:15px">
+    <div class="hover-row">
+      <ion-avatar item-start class="avatar-div">
+        <img class="circle-pic" [src]="hoverData.patient.avatar">
+      </ion-avatar>
+      <div style="margin-left: 10px;">
+        <div class="hover-name">{{hoverData.patient.profile.firstName}}{{" "}}{{hoverData.patient.profile.lastName}}</div>
+        <div class="hover-property" *ngIf="hoverData.patient.mhiStatusList.questions">{{hoverData.patient.mhiStatusList.questions[0].value}}{{" "}}{{hoverData.patient.mhiStatusList.questions[0].unit}}</div>
+        <div class="hover-property" *ngIf="hoverData.indicator.questions">{{hoverData.indicator.questions[0].value}}{{" "}}{{hoverData.indicator.questions[0].unit}}</div>
+      </div>
+    </div>
+    <p style="color:#009688">New Value</p>
+
+    <form #editForm="ngForm">
+      <div style="border: solid 1px rgba(128, 128, 128, 0.31);border-radius: 5%;">
+        <ion-input required name="value" type="number" min="1" step=".01" class="select-div" [(ngModel)]="newValue" *ngIf="hoverData.patient.mhiStatusList.questions && !yesNoSelect && !legSwellingSelect"
+          placeholder="{{hoverData.patient.mhiStatusList.questions[0].value}}"></ion-input>
+        <ion-input required name="value" type="number" min="1" step=".01" class="select-div" [(ngModel)]="newValue" *ngIf="hoverData.indicator.questions && !yesNoSelect && !legSwellingSelect"
+          placeholder="{{hoverData.indicator.questions[0].value}}"></ion-input>
+
+        <ion-select name="select-option" class="select-div" [(ngModel)]="newValue" *ngIf="yesNoSelect" interface="popover">
+          <ion-option value="YES">YES</ion-option>
+          <ion-option value="NO">NO</ion-option>
+        </ion-select>
+
+        <ion-select name="select-option" class="select-div" [(ngModel)]="newValue" *ngIf="legSwellingSelect" interface="popover">
+          <ion-option value="SLIGHT">SLIGHT</ion-option>
+          <ion-option value="SOME">SOME</ion-option>
+          <ion-option value="LOT">LOT</ion-option>
+        </ion-select>
+      </div>
+    </form>
+  </div>
+  <ion-row class="hover-action-row">
+    <button class="ion-button clear hover-button right-border" color="dark" (click)="close()">Cancel</button>
+
+    <button class="ion-button clear hover-button" [disabled]="!editForm.form.valid" color="dark" (click)="save()">Save</button>
+
+  </ion-row>
+
+</div>

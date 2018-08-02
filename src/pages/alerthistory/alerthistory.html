@@ -1,0 +1,92 @@
+<!-- Alert History HTML -->
+
+<ion-content class="no-scroll">
+	<!-- Top Menu -->
+	<div class="menu-div">
+		<div tappable ion-item class="menu_item-div" (click)="goToHealthWizzPage()">Health Wizz</div>
+		<div tappable ion-item class="menu_item-div" (click)="goToPatientsPage()">Patients</div>
+		<div tappable ion-item class="menu_item-div-selected" (click)="goToSendAlertPage()">Send Alert</div>
+		<div tappable ion-item class="menu_item-div" (click)="goToAppointmentsPage()">Appointments</div>
+
+		<!-- commented for demo -->
+		<!-- <ion-item class="search_item-div">
+			<ion-input type="text" placeholder="search"></ion-input>
+			<ion-icon name="search" item-end></ion-icon>
+		</ion-item>
+
+		<ion-icon name="notifications-outline" item-start class="notification-icon"></ion-icon> -->
+		<div style="flex: 1 1 auto"></div>
+
+		<div class="menu_item-div" style="margin-left: 20px;" (click)="goToRightMenuPage()">{{userName}}</div>
+	</div>
+
+	<ion-scroll scrollY="true" class="theroot">
+		<div class="body-div">
+			<div class="list-div">
+				<ion-list>
+					<ion-item>
+						<ion-label>CHF 6</ion-label>
+					</ion-item>
+					<ion-item>
+						<ion-label>Pneumonia 3</ion-label>
+					</ion-item>
+					<ion-item>
+						<ion-label>AMI 1</ion-label>
+					</ion-item>
+					<ion-item>
+						<ion-label style="color: #009EA9;">COPD 12</ion-label>
+					</ion-item>
+				</ion-list>
+				<div (click)="goToEditListPage()" class="editList-div">Edit list > </div>
+			</div>
+
+			<div class="result-div" style="background-color: #E2E3E4 !important;">
+
+				<div class="backTitle-div" (click)="goToPatientListItemPage()">
+					< Patients < Helen Ballard </div>
+						<div class="result_title-div" style="margin-top: 20px;">Alert History</div>
+						<div>
+							<div class="weekTitle">Last Week</div>
+							<div class="alertDialog-div">
+								<div class="alertTitle-div">
+									<div class="alertTitle">Low Salt Diet</div>
+									<div class="alertDate">10 Sep 2017</div>
+								</div>
+								<div class="alertBody-div">
+									<div class="alertBody">The special thing about headaches is that by outward appearance, you may not appear to suffer from any disease.
+										Only the possessor of this disease knows what it is like to have it! He feels like banging his head somewhere,
+										but to that extent he possesses awareness that he should not damage his skull or your skull when you profusely
+										tender a basket full of advice as to how he should face this calamity, narrating how you yourself faced similar
+										situations in the not-too-distant past!</div>
+								</div>
+							</div>
+
+							<div class="alertDialog-div">
+								<div class="alertTitle-div">
+									<div class="alertTitle">Pulse</div>
+									<div class="alertDate">17 Jul 2017</div>
+								</div>
+								<div class="alertBody-div">
+									<div class="alertBody">Boil is a localized collection of pus surrounded by inflamed tissue in the skin. It starts off as reddened tender
+										area and over a period of time, the area around it becomes firm and hard. The center of the boil full of pus is
+										soft and is filled with infection fighting white blood cells, bacteria and proteins that eradicate the infection.
+										Finally the pus forms a head, which can be surgically opened or drained out through the surface of the skin.</div>
+								</div>
+							</div>
+
+							<div class="alertDialog-div">
+								<div class="alertTitle-div">
+									<div class="alertTitle">Pulse</div>
+									<div class="alertDate">03 Aug 2017</div>
+								</div>
+								<div class="alertBody-div">
+									<div class="alertBody">Home Remedies To Retain Teeth And Lip Color For Intense Smokers</div>
+								</div>
+							</div>
+						</div>
+
+				</div>
+			</div>
+	</ion-scroll>
+
+</ion-content>

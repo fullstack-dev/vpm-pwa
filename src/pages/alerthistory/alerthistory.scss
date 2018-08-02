@@ -1,0 +1,54 @@
+.alertDialog-div {
+    width: 86vw;
+    margin-top: 20px;
+    box-shadow: 1px 1px 6px 1px;
+    border: 1px solid #fff;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.alertTitle-div {
+	position: relative;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    border-radius: 8px 8px 0 0;
+    background-color: #EFEFF4;
+    height: 40px;
+}
+
+.weekTitle {
+	color: #000000;	
+	font-size: 18px;
+	line-height: 21px;
+	text-align: left;	
+	margin-top: 20px;
+}
+
+.alertTitle {
+	color: #414141;
+	font-size: 18px;	
+	line-height: 21px;	
+	text-align: right;
+	margin-left: 20px;
+}
+
+.alertDate {
+    color: #737370;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: right;
+    width: 70vw;
+}
+
+.alertBody-div {
+	
+}
+
+.alertBody {
+	color: #414141;
+	font-size: 18px;	
+	line-height: 24px;
+    margin-left: 10px;
+}

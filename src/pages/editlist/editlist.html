@@ -1,0 +1,36 @@
+<div class="editlistDialog-div">
+	<div class="left_editlist-div">
+		<ion-list>
+			<ion-item style="height: 60px;" *ngFor="let template of templates">
+				<ion-label style="color: #009EA9;">{{template.name}}</ion-label>
+				<ion-checkbox color="#41c4cd" checked="true" style="border-radius: 10px;"></ion-checkbox>
+			</ion-item>
+		</ion-list>
+	</div>
+	<div class="right_editlist-div">
+		<ion-list>
+			<div class="listitem-div">
+				<ion-item>
+					<ion-label style="color: #009EA9;">Detroit Hospital</ion-label>
+					<ion-checkbox color="#41c4cd" checked="true" style="border-radius: 10px;"></ion-checkbox>
+				</ion-item>
+				<div class="m-sign-div">-</div>
+			</div>
+			<!-- Hided for demo -->
+			<!-- <div class="listitem-div">
+				  	<ion-item>
+				  		<ion-label style="color: #009EA9;">HUDA Clinic</ion-label>
+				  		<ion-checkbox color="#41c4cd" checked="true" style="border-radius: 10px;"></ion-checkbox>
+				  	</ion-item>
+				  	<div class="m-sign-div">-</div>
+				</div> -->
+			<div class="lastitem-div">
+				<div class="emailinput_editlist-div">
+					<ion-input type="text" placeholder="Add new group"></ion-input>
+				</div>
+				<div class="p-sign-div">+</div>
+			</div>
+			<div class="listitem-div saving-button" style="margin-top: 20px;">Save</div>
+		</ion-list>
+	</div>
+</div>

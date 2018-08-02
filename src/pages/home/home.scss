@@ -1,0 +1,222 @@
+page-home {}
+
+.no-scroll .scroll-content {
+    overflow: hidden;
+}
+
+.menu-div {
+    height: 48px;
+    position: relative;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    background-color: #FAFAFA; // border-bottom-width: 2px;
+    // border-bottom-color: #EFEFF4;
+    // border-bottom-style: solid;
+}
+
+.menu_item-div {
+    width: 14vw; // height: 35px;
+    vertical-align: middle;
+    text-align: center; // padding-top: 10px;
+    color: #737370;
+    font-size: 14px;
+    line-height: 19px;
+    background-color: #FAFAFA;
+}
+
+.menu_item-div-selected {
+    width: 14vw; // height: 35px;
+    vertical-align: middle;
+    text-align: center; // padding-top: 10px;
+    color: #009EA9;
+    font-size: 14px;
+    line-height: 19px;
+    background-color: #FAFAFA;
+}
+
+.search_item-div {
+    height: 44px;
+    width: 20vw; // margin-left: 16vw;
+    background: transparent;
+}
+
+.notification-icon {
+    font-size: 2.2em !important;
+    padding-left: 8px;
+}
+
+.theroot {
+    height: 93%;
+}
+
+.body-div {
+    position: relative;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: block;
+    height: 100vh;
+    width: 100vw;
+}
+
+.list-div {
+    position: absolute;
+    width: 14vw;
+    height: 100%;
+    float: left;
+    /*background-color: #FAFAFA;*/
+    // border-right-color: #EFEFF4;
+    // border-right-style: solid;
+    // border-right-width: 2px;
+}
+
+.result-div {
+    width: 86vw;
+    float: right;
+    padding: 16px;
+    background: rgba(220, 220, 220, 0.28);
+    box-shadow: inset 1px 1px 1px 1px rgba(158, 158, 158, 0.45);
+    /*padding-bottom: 200px;*/
+}
+
+.result_title-div {
+    color: #009EA9;
+    font-size: 36px; // line-height: 21px;
+    height: 40px;
+}
+
+.dropdown_menu-div {
+    margin-top: 20px;
+    position: relative;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.sortby-div {
+    font-size: 15px;
+    width: 70px;
+    font-weight: bold;
+}
+
+.select-div {
+    // padding-left: 0px !important;
+    // padding-right: 5px !important;
+    // padding-top: 0px !important;
+    // padding-bottom: 0px !important;
+    width: 100%;
+    max-width: 100% !important;
+}
+
+.top-col {
+    padding-bottom: 0;
+}
+
+.top-row {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.data-row-top-col {
+    padding-top: 0;
+}
+
+.first_row-div {
+    height: 96px; // background-color: #FAFAFA;
+    margin: 1px;
+    font-weight: bold;
+}
+
+.first_row_title-div {
+    height: 48px;
+    color: #000000;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.rest_row-div {
+    background: #ffffff;
+    height: 96px;
+    margin: 1px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.43);
+}
+
+.high-risk {
+    // border: 0.5px solid #EA6288;
+    background-color: #FBE0E7;
+}
+
+.risk {
+    // border: 0.5px solid #FF9800;
+    background-color: rgba(255, 235, 59, 0.32);
+}
+
+.healthy {
+    // border: 0.5px solid #4CAF50;
+    background-color: rgba(158, 206, 160, 0.4);
+}
+
+.image {
+    height: 5vw;
+    width: 5vw;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 5px gray;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.circle-pic {
+    width: 32px;
+    height: 32px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    max-width: 32px !important;
+}
+
+.name-div {
+    height: 16px;
+    color: #737370;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 100;
+    margin-top: 2px;
+    margin-left: 2px;
+}
+
+.name_bottom-div {
+    // position: absolute;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-div {
+    margin-top: -10px;
+}
+
+.avatar_right-div {
+    margin-left: 10px;
+}
+
+.property-div {
+    height: 21px;
+    color: #000000;
+    font-size: 18px;
+    line-height: 13px;
+    margin: 2px;
+}
+
+.time-div {
+    // height: 21px;
+    color: #737370;
+    font-size: 10px;
+    margin-top: 1px;
+    line-height: 15px;
+}

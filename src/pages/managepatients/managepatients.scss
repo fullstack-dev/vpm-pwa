@@ -1,0 +1,100 @@
+.memberDiv {
+    background: rgba(0, 150, 136, 0.15) !important;
+}
+
+.check-all-item {
+    background: transparent;
+    display: flex;
+    margin-right: 27px;
+    right: 0; // position: absolute;
+    margin-left: 55vw;
+}
+
+.check-all-item p {
+    margin-right: 8px;
+}
+
+.check-all-item ion-checkbox {
+    margin-top: 13px;
+}
+
+.check_item-div {
+    position: relative;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.check_text-div {
+    width: 20vw;
+    margin-left: 10px;
+}
+
+.sendInviteText {
+    color: #009EA9;
+    font-size: 24px;
+    line-height: 29px;
+    margin-top: 50px;
+}
+
+.emailinput-div {
+    width: 30vw;
+    border: 0.5px solid #8E8E93;
+    background-color: #FFFFFF
+}
+
+.sendinvite-button {
+    border: 2px solid #000000;
+    border-radius: 6px;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.32);
+    width: 200px;
+    height: 39px;
+    text-align: center;
+    padding-top: 10px;
+    margin-left: 8px;
+}
+
+.otherPart {
+    position: relative;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18vw;
+}
+
+.item-btn-div {
+    width: 6vw; // text-align: right;
+}
+
+.remove-btn {
+    color: black;
+    background: transparent;
+    border-radius: 15%;
+    border: solid 1px;
+}
+
+.add-btn {
+    color: white;
+    background: black;
+    border-radius: 15%;
+}
+
+.resend-btn {
+    background-color: #009688;
+}
+
+.serach-bar {
+    width: 350px;
+    right: 0;
+    position: absolute;
+}
+
+._nghost-c0 .ng2-tag-input-field {
+    width: 100% !important;
+}

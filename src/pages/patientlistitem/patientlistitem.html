@@ -1,0 +1,196 @@
+<!-- Patient Detail Page -->
+
+<ion-content class="no-scroll">
+	<!-- Top Menu -->
+	<div class="menu-div">
+		<div tappable ion-item class="menu_item-div" (click)="goToHealthWizzPage()">Health Wizz</div>
+		<div tappable ion-item class="menu_item-div" (click)="goToPatientsPage()">Patients</div>
+		<div tappable ion-item class="menu_item-div" (click)="goToSendAlertPage()">Send Alert</div>
+		<div tappable ion-item class="menu_item-div" (click)="goToAppointmentsPage()">Appointments</div>
+
+		<!-- commented for demo -->
+		<!-- <ion-item class="search_item-div">
+			<ion-input type="text" placeholder="search"></ion-input>
+			<ion-icon name="search" item-end></ion-icon>
+		</ion-item>
+
+		<ion-icon name="notifications-outline" item-start class="notification-icon"></ion-icon> -->
+		<div style="flex: 1 1 auto"></div>
+
+		<div class="menu_item-div" style="margin-left: 20px;" (click)="goToRightMenuPage()">{{userName}}</div>
+	</div>
+
+	<ion-scroll scrollY="true" class="theroot">
+		<div class="body-div">
+			<div class="list-div">
+				<ion-list class="group-list">
+					<ion-item *ngFor="let template of templates" [ngClass]="{selectedTemplate: template.id === selected_template}">
+						<ion-label>{{template.name}}</ion-label>
+					</ion-item>
+				</ion-list>
+				<!-- hided for demo -->
+				<div (click)="goToEditListPage()" class="editList-div">Edit list > </div>
+			</div>
+
+			<div class="result-div">
+				<div class="backTitle-div" (click)="goToPatients()">
+					< Back </div>
+						<div class="basicProperty-div">
+							<div class="basicPropertyLeft-div">
+								<ion-avatar item-start>
+									<img class="circle-pic_large" [src]="patient.avatar">
+								</ion-avatar>
+								<div class="nameProperty-div">{{patient.profile.firstName}}{{" "}}{{patient.profile.lastName}}</div>
+								<div class="timeProperty-div">{{patient.bio.dob | date}}</div>
+								<div class="phone-div">
+									<ion-icon name="call-outline"></ion-icon>
+									<div class="phoneNumberProperty-div">{{patient.bio.cell}}</div>
+								</div>
+								<div class="phone-div">
+									<ion-icon name="mail-outline"></ion-icon>
+									<div class="phoneNumberProperty-div">{{patient.bio.email}}</div>
+								</div>
+							</div>
+							<div class="basicPropertyRight-div">
+								<div class="dialog-div">
+									<div class="dialogTitle">Subject:</div>
+									<ion-input type="text" [(ngModel)]="subject" placeholder="Your next appointment" class="dialogInput"></ion-input>
+								</div>
+								<div class="dialogBody-div">
+									<ion-textarea [(ngModel)]="message" style="height: 120px"></ion-textarea>
+									<button ion-button color="light" outline class="sendButton" (click)="sendAlert()">Send</button>
+								</div>
+							</div>
+						</div>
+						<!-- hided for demo -->
+						<!-- <div class="alertHistoryArrow" (click)="goToAlertHistoryPage()"> Alert History > </div> -->
+
+						<hr>
+						<div class="secondProperty-div">
+							<div class="secondProFirstText">{{challengeName}}</div>
+							<!-- hided for demo -->
+							<!-- <div class="secondProSecondText">Detroit Hospital</div>
+							<div class="editArrow"> Edit > </div> -->
+						</div>
+						<ion-grid>
+							<ion-row>
+								<ion-col style="margin:5px" class="first_row-div" *ngFor="let indicator of patient.mhiStatusList">
+									<p class="first_row_title-div">
+										{{indicator.indicatorCode}}
+									</p>
+								</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col (click)="presentPopover(patient,indicator, $event)" style="padding-top: 20px;margin:5px" class="rest_row-div" *ngFor="let indicator of patient.mhiStatusList"
+								  [ngClass]="{'high-risk': indicator.status == 'RED', 'risk': indicator.status == 'YELLOW', 'healthy': indicator.status == 'GREEN'}">
+									<p class="time-div" *ngIf="indicator.indicatorCode !== 'Next Appointment'">{{indicator.lastUpdatedDate}}</p>
+									<p class="time-div" *ngIf="indicator.indicatorCode === 'Next Appointment' && indicator.lastUpdatedDate !== 'Not Scheduled'">{{indicator.lastUpdatedDate | date: 'short'}}</p>
+									<p class="time-div" *ngIf="indicator.indicatorCode === 'Next Appointment' && indicator.lastUpdatedDate === 'Not Scheduled'">{{indicator.lastUpdatedDate}}</p>
+									<!-- <p class="property-div">{{indicator.questions[0].value}}</p> -->
+									<p *ngIf="indicator.indicatorCode !== 'Leg Swelling'" class="property-div">{{indicator.questions[0].value}}
+										<span *ngIf="indicator.indicatorCode === 'Daily Weight' && indicator.questions[0].value">{{" "}}{{indicator.questions[0].unit}}</span>
+									</p>
+									<p *ngIf="indicator.indicatorCode == 'Leg Swelling'" class="property-div">
+										<span *ngIf="indicator.questions[0].value === 'LOT'">+++</span>
+										<span *ngIf="indicator.questions[0].value === 'SOME'">++</span>
+										<span *ngIf="indicator.questions[0].value === 'SLIGHT'">+</span>
+									</p>
+								</ion-col>
+							</ion-row>
+						</ion-grid>
+						<!-- hided for demo -->
+						<!-- <div class="alertHistoryArrow" (click)="goToCHFHistoryPage()"> CHF History > </div> -->
+
+						<!-- medical records hided for demo on 19 dec -->
+						<hr>
+						<!-- <ion-list *ngFor="let record of medRecords">
+							<ion-item>
+								<h4>
+									{{record.lastUpdated}}
+								</h4>
+								<br>
+								<textarea style="width:95%; height:200px;margin:10px;" [ngModel]="record.data" disabled>
+
+								</textarea>
+							</ion-item>
+						</ion-list> -->
+
+
+
+						<!-- <div class="medTitle">Med records</div>
+						<div class="sortbyText">Sortby: Date 1-9</div>
+
+						<div class="yearText">2017</div>
+						<div class="folder-div">
+							<ion-icon name="folder-outline" class="icon-div"></ion-icon>
+							<div class="hospitalText">Cancer</div>
+							<div class="dateText">05/13/17</div>
+						</div>
+						<div class="hospital-div">
+							<img src="assets/img/hospitals.png">
+							<div class="hospitalText">Mount Ida Hospital</div>
+						</div>
+						<div class="detail-div">
+							<div class="hospitalText">Cancer</div>
+							<div class="detailSText">High_Performing_in_Chronic_hhwbehfchpoior_746264 </div>
+							<div class="detailDateText">04/12/17</div>
+						</div>
+						<div class="detail-div">
+							<div class="hospitalText">Asthma</div>
+							<div class="detailSText">MedList_fdgj0_346.pdf</div>
+							<div class="detailDateText">03/15/17</div>
+						</div>
+						<div class="folder-div">
+							<ion-icon name="folder-outline" class="icon-div"></ion-icon>
+							<div class="hospitalText">Cancer accident</div>
+							<div class="dateText">03/14/17</div>
+						</div>
+						<div class="hospital-div">
+							<img src="assets/img/hospitals.png">
+							<div class="hospitalText">Cancer Hospital</div>
+						</div>
+						<div class="detail-div">
+							<div class="hospitalText">Diabetes</div>
+							<div class="detailSText">0026KL_00_CCD.pdf</div>
+							<div class="detailDateText">03/01/17</div>
+						</div>
+						<div class="yearText">2016</div>
+						<div class="hospital-div">
+							<img src="assets/img/labs.png">
+							<div class="hospitalText">Patient Centric Lab</div>
+						</div>
+						<div class="detail-div">
+							<div class="hospitalText">Cystic fibrosis</div>
+							<div class="detailSText">Dantict_00_Cege443.doc</div>
+							<div class="detailDateText">11/12/16</div>
+						</div>
+						<div class="folder-div">
+							<ion-icon name="folder-outline" class="icon-div"></ion-icon>
+							<div class="hospitalText">For job</div>
+							<div class="dateText">10/25/16</div>
+						</div>
+						<div class="hospital-div">
+							<img src="assets/img/providers.png">
+							<div class="hospitalText">Messachsetts General Hospital Boston</div>
+						</div>
+						<div class="detail-div">
+							<div class="hospitalText">Diabetes</div>
+							<div class="detailSText">Dantict_00_Cege443D High Performing in Chronic.pdf</div>
+							<div class="detailDateText">10/19/16</div>
+						</div>
+						<div class="detail-div">
+							<div class="hospitalText">Hart Disease</div>
+							<div class="detailSText">199_IIK_X-ray.pdf</div>
+							<div class="detailDateText">10/01/16</div>
+						</div>
+						<div class="detail-div">
+							<div class="hospitalText">Stress</div>
+							<div class="detailSText">67465_IIK_X-ray.pdf</div>
+							<div class="detailDateText">03/15/17</div>
+						</div> -->
+
+				</div>
+			</div>
+	</ion-scroll>
+
+</ion-content>

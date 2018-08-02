@@ -1,0 +1,33 @@
+<div style="padding: 15px;">
+	<!-- class="{{hoverData.patient.mhiStatusList.status}}" -->
+	<div class="hover-row">
+		<ion-avatar item-start class="avatar-div">
+			<img class="circle-pic" [src]="hoverData.patient.avatar">
+		</ion-avatar>
+		<div style="margin-left: 10px;">
+			<div class="hover-name">{{hoverData.patient.profile.firstName}}{{" "}}{{hoverData.patient.profile.lastName}}</div>
+			<div class="hover-property" *ngIf="hoverData.patient.mhiStatusList.questions">{{hoverData.patient.mhiStatusList.questions[0].value}}{{" "}}{{hoverData.patient.mhiStatusList.questions[0].unit}}</div>
+			<div class="hover-property" *ngIf="hoverData.indicator.questions">{{hoverData.indicator.questions[0].value}}{{" "}}{{hoverData.indicator.questions[0].unit}}</div>
+		</div>
+	</div>
+	<hr style="background-color: #EFEFF4;width: 95%;">
+	<div class="hover-row">
+		<ion-icon name="mail"></ion-icon>
+		<div class="phoneNumberProperty-div" style="color: #737370; font-size: 14px; line-height: 19px;margin-left: 20px;">{{hoverData.patient.bio.email}}</div>
+	</div>
+	<div class="hover-row">
+		<div>
+			<ion-icon name="call"></ion-icon>
+		</div>
+		<div class="phoneNumberProperty-div" style="color: #737370; font-size: 14px; line-height: 19px;margin-left: 20px;">{{hoverData.patient.bio.cell}}</div>
+	</div>
+	<hr style="background-color: #EFEFF4;width: 95%;">
+	<div class="hover-row">
+		<div class="hover-button" *ngIf="hoverData.patient.mhiStatusList.indicatorCode !== 'Next Appointment' && sendAlert !== false"
+		  (click)="presentEditPopover(hoverData.patient,hoverData.indicator, $event)">Edit</div>
+		<div class="hover-button" *ngIf="hoverData.patient.mhiStatusList.indicatorCode === 'Next Appointment' || hoverData.indicator.indicatorCode === 'Next Appointment'"
+		  (click)="goToAppointment(hoverData.patient)">Schedule an appointment</div>
+		<div class="hover-button" *ngIf="sendAlert !== false" (click)="presentAlertPopover(hoverData.patient,hoverData.indicator, $event)">
+		Send Alert </div>
+	</div>
+</div>

@@ -1,0 +1,20 @@
+page-delete-group {
+  .button-row {
+    position: absolute;
+    width: 90%;
+    bottom: 30px;
+  }
+  #cancel-btn {
+    float: left;
+    width: 100px;
+  }
+  #delete-btn {
+    float: right;
+    width: 150px;
+  }
+  #item-input {
+    margin-top: 50px;
+    width: 90%;
+    margin-left: 20px;
+  }
+}

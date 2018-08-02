@@ -1,0 +1,33 @@
+.sendDialog-div {
+    width: 86vw;
+    height: 200px;
+    position: absolute;
+    bottom: 0;
+    z-index: 100;
+    background-color: white;
+    right: 0;
+}
+
+.small_circle-div {
+    margin-right: 10px;
+    /*margin-left: 10px;*/
+    width: 15px;
+    height: 15px;
+    border-radius: 10px;
+    border: 2px solid gray;
+}
+
+.dialogInputR {
+    margin-left: 10px;
+    background-color: white;
+    margin-right: 40vw;
+}
+
+.sendAlertResult-div {
+    width: 86vw;
+    float: right;
+    padding: 16px;
+    padding-bottom: 200px;
+    background: rgba(220, 220, 220, 0.28);
+    box-shadow: inset 1px 1px 1px 1px rgba(158, 158, 158, 0.45);
+}

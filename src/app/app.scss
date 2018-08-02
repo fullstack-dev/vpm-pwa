@@ -1,0 +1,65 @@
+@import "css/animate.scss";
+@import "css/intlTelInput.scss";
+@import "../../node_modules/ionic2-auto-complete/auto-complete";
+.toolbar-md-primary .toolbar-background-md {
+    background: #607D8B;
+}
+
+page-edit-group {}
+
+.editGroupModal .modal-wrapper {
+    top: 0px !important;
+    width: 450px !important;
+}
+
+.editGroupModal .scroll-content {
+    overflow-y: hidden !important;
+}
+
+.deleteGroupModal .modal-wrapper {
+    height: 70% !important;
+    left: 45% !important;
+    border-radius: 5% !important;
+}
+
+.deleteGroupModal .scroll-content {
+    overflow-y: hidden !important;
+}
+
+.invite-result-modal .modal-wrapper {
+    left: 30%;
+    height: 70% !important;
+}
+
+.appointmentPatientsModal .modal-wrapper {
+    left: 30% !important;
+    height: 80% !important;
+}
+
+ion-auto-complete {
+    width: 50vw !important;
+}
+
+.button-outline-md {
+    border-width: 2px !important;
+}
+
+.grid {
+    padding: 0;
+}
+
+.selectedTemplate {
+    color: #009EA9;
+    border-right: solid 2px #009EA9;
+}
+
+.select-item {
+    width: 200px;
+    background: transparent;
+    font-weight: bold;
+}
+
+ion-select .item-cover {
+    width: 0% !important;
+    height: 0% !important;
+}

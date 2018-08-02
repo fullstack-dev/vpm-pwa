@@ -1,0 +1,27 @@
+<ion-content padding>
+  <ion-list no-lines>
+    <ion-item>
+      <p>You are going to delete the {{challenge.name}}{{"/"}}{{challenge.challengeTemplateInfo.name}} group.</p>
+    </ion-item>
+    <ion-item>
+      <p style="color:#E91E63">With this action you'll lose all the patient's data associated with this group.</p>
+      <p style="color:#E91E63">This action can't be undone.</p>
+    </ion-item>
+    <ion-item>
+      <p>Please type the name of the group you want to delete:</p>
+    </ion-item>
+    <ion-item id="item-input">
+      <ion-input [(ngModel)]="challenge_name" placeholder="Name of the group you want to delete"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-row class="button-row">
+    <ion-col>
+      <button ion-button clear block (click)="cancel()" id="cancel-btn">Cancel</button>
+    </ion-col>
+    <ion-col>
+      <button ion-button outline block color="dark" (click)="delete()" id="delete-btn">Delete</button>
+    </ion-col>
+
+
+  </ion-row>
+</ion-content>

@@ -1,0 +1,153 @@
+<ion-content class="no-scroll">
+  <div class="menu-div">
+    <div tappable ion-item class="menu_item-div" (click)="goToHealthWizzPage()">Health Wizz</div>
+    <div tappable ion-item class="menu_item-div" (click)="goToPatientsPage()">Patients</div>
+    <div tappable ion-item class="menu_item-div" (click)="goToSendAlertPage()">Send Alert</div>
+    <div tappable ion-item class="menu_item-div" (click)="goToAppointmentsPage()">Appointments</div>
+
+    <!-- <ion-icon name="notifications-outline" item-start class="notification-icon"></ion-icon> -->
+    <div style="flex: 1 1 auto"></div>
+    <div class="menu_item-div" style="margin-left: 20px;" (click)="goToRightMenuPage()">{{userName}}</div>
+  </div>
+  <ion-scroll scrollY="true" class="theroot">
+    <div class="body-div">
+      <div class="list-div">
+        <ion-list class="group-list">
+          <ion-item *ngFor="let template of templates" [ngClass]="{selectedTemplate: template.id === selected_template}">
+            <ion-label>{{template.name}}({{group?.challenges.length}})</ion-label>
+          </ion-item>
+        </ion-list>
+        <div (click)="goToEditListPage()" class="editList-div">Edit list > </div>
+      </div>
+      <div class="result-div">
+        <!-- <div class="backTitle-div" style="padding: 10px;padding-left: 0;color: gray;" (click)="goBack()">
+          < Go Back </div> -->
+        <div class="result_title-div">Manage Patients</div>
+        <!-- <div class="sendInviteText">Send Invite to user email/phone</div> -->
+
+        <form (submit)="searchForPatient()">
+          <div class="check_item-div">
+            <ion-item style="width:50vw; padding-left:0 !important;height:44px">
+              <ion-input name="serachInput" type="text" [(ngModel)]="query" placeholder="Search and invite"></ion-input>
+              <!-- <ion-icon style="margin-right:20px; cursor:pointer" name="search" item-start></ion-icon> -->
+              <ion-icon name="close" item-end (click)="clearSearch()">
+              </ion-icon>
+            </ion-item>
+            <button type="submit" style="width:100px; background: white; height:44px; cursor:pointer" ion-button outline ion-only color="dark">
+              <ion-icon name="search"></ion-icon>
+            </button>
+
+          </div>
+        </form>
+        <div style="display:flex">
+          <input style="margin-top:10px" id="preview" type="file" accept=".csv,.txt" (change)="previewFile($event)" />
+          <!-- <div class="check-all-item"> -->
+
+          <p *ngIf="checks.length !== 0" style="margin-left: 50vw;">Select All</p>
+          <ion-checkbox style="margin-top: 13px;margin-left: 2vw;" *ngIf="checks.length !== 0" color="dark" name="toggle" [(ngModel)]="toggle_all_value"
+            (ionChange)="toggleSelects()"></ion-checkbox>
+          <!-- </div> -->
+        </div>
+
+        <ion-list no-lines *ngFor="let patient of searchResult; let i = index">
+          <div class="list_items-div">
+            <ion-avatar item-start *ngIf="patient.avatar">
+              <img class="circle-pic_middle" [src]="patient.avatar">
+            </ion-avatar>
+
+            <div style="width:64px; height:64px" *ngIf="patient.avatar == null"></div>
+            <div class="item_name-div">{{patient.profile.firstName}}{{" "}}{{patient.profile.lastName}}</div>
+
+            <ion-icon name="ios-call-outline" *ngIf="patient.bio.cell"></ion-icon>
+            <div class="item_phonenumber-div">{{patient.bio.cell}}</div>
+
+            <ion-icon name="ios-mail-outline" *ngIf="patient.bio.email"></ion-icon>
+            <div class="item_mail-div">{{patient.bio.email}}</div>
+            <div class="item_other-div"></div>
+            <div style="width:10vw">{{patient.bio.dob | date: 'mediumDate'}}</div>
+            <!-- (click)="invitePatient(patient, i, true)" -->
+            <div class="item-btn-div">
+              <!-- <button ion-button icon-only color="dark" clear class="add-btn">
+                <ion-icon name="md-add"></ion-icon>
+              </button> -->
+              <ion-checkbox [(ngModel)]="checks[i]" (ionChange)="temp()"></ion-checkbox>
+            </div>
+          </div>
+        </ion-list>
+        <div *ngIf="checks.length !== 0" style="width:99%; text-align:right">
+          <button style="float:right; width:10vw" ion-button block outline color="dark" (click)="sendInvites()">Send Invite</button>
+        </div>
+
+        <!-- <div class="sendInviteText">Send Invite to user from data base</div>         -->
+        <div class="dropdown_menu-div" style="justify-content: left !important; margin-top:50px !important">
+          <div class="sortby-div">Sort by:</div>
+          <ion-item style="width: 200px;background:transparent">
+            <ion-select class="select-div" interface="popover" [(ngModel)]="sortType">
+              <ion-option value="R-H">Risk-Healthy</ion-option>
+              <ion-option value="H-R">Healthy-Risk</ion-option>
+              <ion-option value="A-Z">Patient A-Z</ion-option>
+              <ion-option value="Z-A">Patient Z-A</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item class="select-item" style="width:300px">
+            <ion-select class="select-div" interface="popover" [(ngModel)]="challenge" (ionChange)="selectChallenge(true)">
+              <ion-option *ngFor="let _challenge of group?.challenges" [value]="_challenge">{{_challenge.name}}</ion-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item class="search_item-div">
+            <ion-input type="text" placeholder="search" [(ngModel)]="filterArgs"></ion-input>
+            <ion-icon name="search" item-end></ion-icon>
+          </ion-item>
+        </div>
+        <!-- <div > -->
+        <ion-list no-lines *ngFor="let patient of patients | manageSearch: filterArgs | sortBy: {by: sortType}; let i = index">
+          <div *ngIf="patient !== null" class="list_items-div" [ngClass]="{memberDiv: patient.profile.invitationState === 'accept'}">
+            <ion-avatar item-start *ngIf="patient.avatar">
+              <img class="circle-pic_middle" [src]="patient.avatar">
+            </ion-avatar>
+            <ion-avatar item-start *ngIf="!patient.avatar">
+              <img class="circle-pic_middle">
+            </ion-avatar>
+            <div class="item_name-div">{{patient.profile.firstName}}{{" "}}{{patient.profile.lastName}}</div>
+            <ion-icon name="ios-call-outline" *ngIf="patient.bio.cell"></ion-icon>
+            <div class="item_phonenumber-div">{{patient.bio.cell}}</div>
+
+            <ion-icon name="ios-mail-outline" *ngIf="patient.bio.email"></ion-icon>
+            <div class="item_mail-div">{{patient.bio.email}}</div>
+
+            <!-- TODO: show groups name -->
+            <!-- <div class="item_other-div" *ngFor="let other of patient.otherChallenges">
+                <span>{{other}}</span>
+              </div> -->
+            <div class="item_other-div">
+              <span>{{patient.template_name}}</span>
+            </div>
+            <div *ngIf="patient.statusCount && patient.profile.invitationState === 'accept'" style="width: 10vw;display: flex;">
+              <div class="firstNumberCircle">{{patient.statusCount.red}}</div>
+              <div class="secondNumberCircle">{{patient.statusCount.yellow}}</div>
+              <div class="thirdNumberCircle">{{patient.statusCount.green}}</div>
+            </div>
+            <div *ngIf="!patient.isMember || (patient.isMember && patient.profile.invitationState === 'invite')" style="width: 10vw;display: flex;">
+              <p>Pending invitation</p>
+            </div>
+            <!-- *ngIf="patient.isMember && patient.profile.invitationState === 'accept'" -->
+            <div *ngIf="!patient.isMember || (patient.isMember && patient.profile.invitationState === 'invite')" class="item-btn-div"
+              (click)="invitePatient(patient, i, false)">
+              <button ion-button icon-only color="dark" clear class="remove-btn">
+                <ion-icon name="md-refresh"></ion-icon>
+              </button>
+            </div>
+            <div (click)="deleteInvitation(patient, i)" class="item-btn-div">
+              <button ion-button icon-only color="dark" clear class="remove-btn">
+                <ion-icon name="md-remove"></ion-icon>
+              </button>
+            </div>
+
+          </div>
+        </ion-list>
+        <!-- </div> -->
+      </div>
+    </div>
+  </ion-scroll>
+</ion-content>

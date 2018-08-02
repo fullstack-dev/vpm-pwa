@@ -1,0 +1,73 @@
+<!-- CHF History HTML -->
+
+<ion-content class="no-scroll">
+	<!-- Top Menu -->
+	<div class="menu-div">
+		<div tappable ion-item class="menu_item-div" (click)="goToHealthWizzPage()">Health Wizz</div>
+		<div tappable ion-item class="menu_item-div-selected" (click)="goToPatientsPage()">Patients</div>
+		<div tappable ion-item class="menu_item-div" (click)="goToSendAlertPage()">Send Alert</div>
+		<div tappable ion-item class="menu_item-div" (click)="goToAppointmentsPage()">Appointments</div>
+
+		<!-- commented for demo -->
+		<!-- <ion-item class="search_item-div">
+			<ion-input type="text" placeholder="search"></ion-input>
+			<ion-icon name="search" item-end></ion-icon>
+		</ion-item>
+
+		<ion-icon name="notifications-outline" item-start class="notification-icon"></ion-icon> -->
+		<div style="flex: 1 1 auto"></div>
+
+		<div class="menu_item-div" style="margin-left: 20px;" (click)="goToRightMenuPage()">{{userName}}</div>
+	</div>
+
+	<ion-scroll scrollY="true" class="theroot">
+		<div class="body-div">
+			<div class="list-div">
+				<ion-list>
+					<ion-item>
+						<ion-label>CHF 6</ion-label>
+					</ion-item>
+					<ion-item>
+						<ion-label>Pneumonia 3</ion-label>
+					</ion-item>
+					<ion-item>
+						<ion-label>AMI 1</ion-label>
+					</ion-item>
+					<ion-item>
+						<ion-label style="color: #009EA9;">COPD 12</ion-label>
+					</ion-item>
+				</ion-list>
+				<div (click)="goToEditListPage()" class="editList-div">Edit list > </div>
+			</div>
+
+			<div class="result-div">
+
+				<div class="backTitle-div" (click)="goToPatientListItemPage()">
+					< Patients < {{patient.bio.firstName}}{{ " "}}{{patient.bio.lastName}} </div>
+						<div class="result_title-div" style="margin-top: 20px;">CHF History</div>
+						<div>
+							<div class="weekTitle">Last Week</div>
+							<div>
+								<ion-grid>
+									<ion-row>
+										<ion-col class="first_row-div" *ngFor="let indicator of patient.mhiStatusList">
+											<p class="first_row_title-div">
+												{{indicator.indicatorCode}}
+											</p>
+										</ion-col>
+									</ion-row>
+									<ion-row>
+										<ion-col style="padding-top: 20px;" class="rest_row-div" *ngFor="let indicator of patient.mhiStatusList" [ngClass]="{'high-risk': indicator.status == 'RED', 'risk': indicator.status == 'YELLOW', 'healthy': indicator.status == 'GREEN'}">
+											<p class="time-div">{{indicator.lastUpdatedDate}}</p>
+											<p class="property-div">{{indicator.questions[0].value}}</p>
+										</ion-col>
+									</ion-row>
+								</ion-grid>
+							</div>
+						</div>
+
+				</div>
+			</div>
+	</ion-scroll>
+
+</ion-content>

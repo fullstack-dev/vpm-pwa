@@ -1,0 +1,42 @@
+<ion-content padding>
+  <ion-grid>
+    <ion-row class="head-row">
+      <ion-col>
+        <label>Group Name</label>
+      </ion-col>
+      <ion-col>
+        <label>Condition</label>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let challenge of challenges; let i = index" class="data-row">
+      <ion-col>
+        <label>{{challenge.name}}</label>
+      </ion-col>
+      <ion-col>
+        <label>{{challenge.challengeTemplateInfo.name}}</label>
+        <button ion-button icon-only color="dark" clear class="add-btn" style="float:right; width:3vw" (click)="deleteGroup(challenge, i)">
+          <ion-icon name="md-remove"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="input-row">
+      <ion-col class="input-col">
+        <ion-input type="text" placeholder="New group name" [(ngModel)]="group_name"></ion-input>
+      </ion-col>
+      <ion-col class="select-col">
+        <ion-select [(ngModel)]="selected_template" interface="popover" class="select-div">
+          <ion-option [selected]="template.id === templates[0].id" *ngFor="let template of templates" [value]="template">{{template.name}}</ion-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+
+      </ion-col>
+      <ion-col>
+        <button id="save_btn" ion-button color="dark" outline (click)="createChallenge(selected_template)">Save</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

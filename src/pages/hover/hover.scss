@@ -1,0 +1,60 @@
+.hover-row {
+    position: relative;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.hover-action-row {
+    height: 48px;
+    border-top-style: solid;
+    border-top-width: thin;
+    border-top-color: gainsboro;
+}
+
+.hover-name {
+    color: #737370;
+    font-size: 16px;
+    line-height: 21px;
+}
+
+.hover-property {
+    font-size: 26px;
+    line-height: 21px;
+}
+
+.right-border {
+    border-right-width: 1px;
+    border-right-color: gainsboro;
+    border-right-style: solid;
+}
+
+.hover-textarea {
+    margin: 0;
+    padding: 5px;
+    border: solid 1px rgb(165, 163, 163);
+}
+
+.hover-button {
+    width: 50%;
+    font-weight: bold;
+    text-align: center;
+    background: #fff;
+}
+
+.RED {
+    background: #FBE0E7;
+}
+
+.GREEN {
+    background: rgb(158, 206, 160);
+}
+
+.YELLOW {
+    background: #FFEB3B;
+}
+
+.popover-md .popover-content {
+    width: 400px !important;
+}

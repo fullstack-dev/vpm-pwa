@@ -1,0 +1,16 @@
+<!-- search -->
+<ion-header>
+    <ion-toolbar>
+        <ion-searchbar (ionInput)="getItems($event)" [(ngModel)]="filterArgs"></ion-searchbar>
+    </ion-toolbar>
+</ion-header>
+
+<!-- scroll -->
+<ion-content>
+    <ion-list>
+        <ion-item *ngFor="let patient of patients | search: filterArgs" [ngClass]="{disabledAppointment: patient.cernerId === null}">
+            <ion-label (click)="selectPatient(patient)">{{patient.profile.firstName}}{{" "}}{{patient.profile.lastName}}</ion-label>
+        </ion-item>
+    </ion-list>
+
+</ion-content>

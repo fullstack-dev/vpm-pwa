@@ -1,0 +1,83 @@
+.title-div {
+    padding-top: 15vh;
+    color: steelblue;
+    font-size: 45px;
+    text-align: center;
+}
+
+.go-div {
+    margin-top: 50px; // height: 40px;
+    font-size: 25px;
+    border-radius: 8px; // background: darksalmon;
+    text-align: center; // margin-left: 45%;
+    // margin-right: 45%;
+    padding-top: 5px;
+}
+
+.loadingIcon {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.bar-buttons-md {
+    order: 3 !important;
+}
+
+#loginBtn {
+    height: 44px;
+}
+
+#loginCard {
+    width: 450px;
+    margin: 0 auto;
+    margin-top: 7%;
+    box-shadow: 0 0 1px 1px black;
+}
+
+.login-card-item {
+    margin-top: 4%;
+}
+
+.login-card-input {
+    padding-right: 16px;
+}
+
+.card-header-md {
+    background: #607D8B;
+    color: #ffffff;
+}
+
+.cerner-care-provider img {
+    margin-top: 38px;
+    margin-bottom: 30px;
+}
+
+.epic-care-provider,
+.cerner-care-provider {
+    width: 30%;
+}
+
+.cerner-care-provider {
+    margin-left: 10%;
+    float: left;
+}
+
+.epic-care-provider {
+    margin-left: 20%;
+    float: right;
+}
+
+.epic-care-provider img,
+.cerner-care-provider img {
+    width: 250px;
+}
+
+.epic-care-provider:hover {
+    box-shadow: 0 0 13px 5px #da635d;
+    cursor: pointer;
+}
+
+.cerner-care-provider:hover {
+    box-shadow: 0 0 13px 5px #239fd3;
+    cursor: pointer;
+}

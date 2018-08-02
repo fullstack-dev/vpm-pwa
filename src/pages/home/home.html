@@ -1,0 +1,133 @@
+<ion-content class="no-scroll">
+	<!-- Top Menu -->
+	<div class="menu-div">
+		<div tappable ion-item class="menu_item-div-selected" (click)="goToHealthWizzPage()">Health Wizz</div>
+		<div tappable ion-item class="menu_item-div" (click)="goToPatientsPage()">Patients</div>
+		<div tappable ion-item class="menu_item-div" (click)="goToSendAlertPage()">Send Alert</div>
+		<div tappable ion-item class="menu_item-div" (click)="goToAppointmentsPage()">Appointments</div>
+
+		<!-- <ion-icon name="notifications-outline" item-start class="notification-icon"></ion-icon> -->
+		<div style="flex: 1 1 auto"></div>
+		<div class="menu_item-div" style="margin-left: 20px;" (click)="goToRightMenuPage()">{{userName}}</div>
+	</div>
+
+	<ion-scroll scrollY="true" class="theroot">
+		<div class="body-div">
+			<div class="list-div">
+				<ion-list class="group-list">
+					<ion-item *ngFor="let _template of templates" [ngClass]="{selectedTemplate: _template.id === template?.id}">
+						<ion-label (click)="setInitialData(_template)">{{_template.name}}({{group?.challenges.length}})</ion-label>
+					</ion-item>
+				</ion-list>
+				<div (click)="goToEditListPage()" class="editList-div">Edit list > </div>
+			</div>
+
+			<div class="result-div">
+				<div class="result_title-div">Congestive Heart Failure</div>
+				<!-- <div class="check_item-div">
+					<div *ngFor="let item of group?.challenges;let i = index" style="display:flex">
+						<ion-checkbox [checked]="group_toggle[i]?.value" [disabled]="group_toggle[i]?.value" (click)="toggleGroup(i)" style="border-radius: 10px;"></ion-checkbox>
+						<div class="check_text-div">{{item.name}}</div>
+					</div>
+					<div class="add-new"> Add new > </div>
+				</div> -->
+				<div class="dropdown_menu-div">
+					<div class="sortby-div">Sort by:</div>
+					<ion-item class="select-item">
+
+						<ion-select class="select-div" [(ngModel)]="sortType" interface="popover">
+							<ion-option value="R-H" [selected]="true">Risk-Healthy</ion-option>
+							<ion-option value="H-R">Healthy-Risk</ion-option>
+							<ion-option value="A-Z">Patient A-Z</ion-option>
+							<ion-option value="Z-A">Patient Z-A</ion-option>
+						</ion-select>
+					</ion-item>
+
+					<ion-item class="select-item" style="width:300px">
+						<ion-select class="select-div" interface="popover" [(ngModel)]="challenge" (ionChange)="selectChallenge(true)">
+							<ion-option *ngFor="let _challenge of group?.challenges" [value]="_challenge">{{_challenge.name}}</ion-option>
+						</ion-select>
+					</ion-item>
+
+					<ion-item class="search_item-div">
+						<ion-input type="text" placeholder="search" [(ngModel)]="filterArgs"></ion-input>
+						<ion-icon name="search" item-end></ion-icon>
+					</ion-item>
+
+					<div style="flex:1 1 auto"></div>
+					<!-- <div (click)="goToManagePatientsPage()" class="managePatients-div">Manage Patients > </div> -->
+					<button ion-button icon-right color="light" (click)="goToManagePatientsPage()">
+						Manage Patients
+						<ion-icon name="ios-arrow-forward"></ion-icon>
+
+					</button>
+				</div>
+				<div id="indicator-header">
+					<ion-grid>
+
+						<!-- sorting feature start -->
+						<ion-row>
+							<ion-col *ngFor="let indicator of indicators" class="top-col">
+								<ion-row class="top-row">
+									<ion-col class="first_row-div">
+										<p class="first_row_title-div">
+											{{indicator.code}}
+										</p>
+									</ion-col>
+								</ion-row>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+				</div>
+				<div>
+					<ion-grid>
+
+						<!-- sorting feature start -->
+						<ion-row>
+							<ion-col *ngFor="let item of piList" class="data-row-top-col">
+								<!-- <ion-row>
+										<ion-col class="first_row-div">
+											<p class="first_row_title-div">
+												{{item.indicator.code}}
+											</p>
+										</ion-col>
+									</ion-row> -->
+								<ion-row *ngIf="item.patients.length === 0">
+									<ion-col style="text-align:center"> No Patients </ion-col>
+								</ion-row>
+								<ion-row *ngFor="let patient of item.patients | manageSearch: filterArgs | sortHomeBy: {by: sortType}" style="margin-bottom: 8px;">
+									<ion-col class="rest_row-div animated fadeInDown" [ngClass]="{'high-risk': patient.mhiStatusList.status == 'RED', 'risk': patient.mhiStatusList.status == 'YELLOW', 'healthy': patient.mhiStatusList.status == 'GREEN'}"
+									  (click)="presentPopover(patient,item.indicator, $event)">
+										<p class="name-div">{{patient.profile.firstName}} {{patient.profile.lastName}}</p>
+										<p class="time-div" *ngIf="patient.mhiStatusList.indicatorCode !== 'Next Appointment'">{{patient.mhiStatusList.lastUpdatedDate}}</p>
+										<p class="time-div" *ngIf="patient.mhiStatusList.indicatorCode === 'Next Appointment' && patient.mhiStatusList.lastUpdatedDate !== 'Not Scheduled'">{{patient.mhiStatusList.lastUpdatedDate | date: 'short'}}</p>
+										<p class="time-div" *ngIf="patient.mhiStatusList.indicatorCode === 'Next Appointment' && patient.mhiStatusList.lastUpdatedDate === 'Not Scheduled'">{{patient.mhiStatusList.lastUpdatedDate}}</p>
+										<div class="name_bottom-div">
+											<!-- <ion-avatar item-start class="avatar-div">
+												<img class="circle-pic" [src]="patient.avatar">
+											</ion-avatar> -->
+											<div class="avatar_right-div">
+												<p *ngIf="patient.mhiStatusList.indicatorCode !== 'Leg Swelling'" class="property-div">{{patient.mhiStatusList.questions[0].value}}
+													<span *ngIf="patient.mhiStatusList.indicatorCode === 'Daily Weight' && patient.mhiStatusList.questions[0].value">{{" "}}{{patient.mhiStatusList.questions[0].unit}}</span>
+												</p>
+												<p *ngIf="patient.mhiStatusList.indicatorCode == 'Leg Swelling'" class="property-div">
+													<span *ngIf="patient.mhiStatusList.questions[0].value === 'LOT'">+++</span>
+													<span *ngIf="patient.mhiStatusList.questions[0].value === 'SOME'">++</span>
+													<span *ngIf="patient.mhiStatusList.questions[0].value === 'SLIGHT'">+</span>
+												</p>
+											</div>
+										</div>
+									</ion-col>
+								</ion-row>
+							</ion-col>
+						</ion-row>
+						<!-- sorting feature end -->
+					</ion-grid>
+				</div>
+
+				<div style="height:50vh"></div>
+			</div>
+		</div>
+	</ion-scroll>
+
+</ion-content>

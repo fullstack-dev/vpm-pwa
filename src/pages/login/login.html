@@ -1,0 +1,66 @@
+<!-- <ion-header>
+		<ion-toolbar color="primary">
+				<ion-buttons start>
+						<button ion-button>
+								<img alt="logo" height="40"src="assets/img/logo.png" >
+						</button>
+					</ion-buttons>
+						<ion-title>Health Wizz</ion-title>
+			</ion-toolbar>
+</ion-header> -->
+
+<ion-content padding>
+	<div *ngIf="!cernerActive">
+		<div class="title-div">
+			<h2>Choose Your Care Provider</h2>
+		</div>
+		<div class="go-div" *ngIf="!healthwizzActive">
+			<div style="display:flex">
+				<div class="cerner-care-provider" (click)="loginToCerner()">
+					<img alt="logo" height="80" src="assets/img/cerner.png">
+					<p style="color:gray">Login to Cerner</p>
+				</div>
+				<div class="epic-care-provider" (click)="loginToEpic()">
+					<img alt="logo" height="150" src="assets/img/epic-heart-crop.png">
+					<p style="color:gray">Login to EPIC</p>
+				</div>
+			</div>
+
+		</div>
+		<div class="go-div" *ngIf="healthwizzActive" (click)="loginToHealthwizz()">
+			<img alt="logo" height="100" src="assets/img/logo.png">
+			<p style="color:gray">Login to Health Wizz</p>
+		</div>
+		<div class="loadingIcon">
+			<img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+			/>
+		</div>
+	</div>
+	<div *ngIf="cernerActive">
+
+		<ion-card id="loginCard">
+			<ion-card-header>
+				Login to Health Wizz
+			</ion-card-header>
+			<form #loginForm="ngForm" (submit)="login()">
+				<ion-list>
+
+					<ion-item class="login-card-item login-card-input">
+						<!-- <ion-label floating>Email</ion-label> -->
+						<ion-input type="email" name="email" placeholder="Email" [(ngModel)]="credentials.emailID" required clearInput></ion-input>
+					</ion-item>
+
+					<ion-item class="login-card-item login-card-input">
+						<!-- <ion-label floating>Password</ion-label> -->
+						<ion-input type="password" name="password" placeholder="Password" [(ngModel)]="credentials.password" required clearInput></ion-input>
+					</ion-item>
+
+					<ion-item class="login-card-item">
+						<button id="loginBtn" ion-button block type="submit" [disabled]="!loginForm.form.valid">Sign In</button>
+					</ion-item>
+
+				</ion-list>
+			</form>
+		</ion-card>
+	</div>
+</ion-content>

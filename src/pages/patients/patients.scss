@@ -1,0 +1,182 @@
+page-patients {}
+
+.list_items-div {
+    position: relative;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    width: 100%;
+    background-color: #FAFAFA;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    box-shadow: 1px 3px 1px #E7E7E7;
+}
+
+.item_avatar-div {}
+
+.circle-pic_middle {
+    width: 64px;
+    height: 64px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.item_name-div {
+    height: 22px;
+    overflow-y: auto;
+    width: 18vw;
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+.item_phonenumber-div {
+    width: 11vw;
+    font-size: 12px;
+    padding-left: 7px;
+}
+
+.item_mail-div {
+    width: 18vw;
+    font-size: 12px;
+    padding-left: 8px;
+}
+
+.item_other-div {
+    width: 12vw;
+    font-size: 12px;
+}
+
+.item_time-div {
+    width: 12vw;
+    font-size: 11px;
+    text-align: right;
+}
+
+.firstNumberCircle {
+    border-radius: 50%;
+    behavior: url(PIE.htc);
+    width: 25px;
+    height: 25px;
+    padding-top: 5px;
+    background: #E85A88;
+    text-align: center;
+    font: 12px Arial, sans-serif;
+}
+
+.secondNumberCircle {
+    border-radius: 50%;
+    behavior: url(PIE.htc);
+    width: 25px;
+    height: 25px;
+    padding-top: 5px;
+    background: #FCBB46;
+    text-align: center;
+    font: 12px Arial, sans-serif;
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+.thirdNumberCircle {
+    border-radius: 50%;
+    behavior: url(PIE.htc);
+    width: 25px;
+    height: 25px;
+    padding-top: 5px;
+    background: #71C89A;
+    text-align: center;
+    font: 12px Arial, sans-serif;
+}
+
+.editlistDialog-div {
+    width: 550px;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    z-index: 100;
+    background-color: white;
+    left: 0;
+    vertical-align: middle;
+    display: flex;
+    align-items: start;
+    padding-top: 50px;
+    justify-content: left;
+}
+
+.left_editlist-div {
+    width: 35%;
+}
+
+.right_editlist-div {
+    width: 65%;
+    border-left: 1px solid #EFEFF4;
+    height: 100%;
+}
+
+.emailinput_editlist-div {
+    border: 1px solid gray;
+    width: 80%;
+    margin-left: 10px;
+    border-radius: 4px;
+}
+
+.saving-button {
+    justify-content: center !important;
+    font-size: 15px;
+    border: 2px solid;
+    margin-left: 50px;
+    margin-right: 50px;
+    height: 40px !important;
+}
+
+.listitem-div {
+    position: relative;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    height: 60px;
+}
+
+.lastitem-div {
+    position: relative;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.m-sign-div {
+    width: 45px;
+    font-size: 36px;
+    text-align: center;
+    border: 1px solid;
+    border-radius: 10px;
+    height: 45px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.p-sign-div {
+    width: 45px;
+    font-size: 36px;
+    text-align: center;
+    border: 1px solid;
+    border-radius: 10px;
+    height: 45px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    vertical-align: middle;
+    margin-right: 10px;
+    color: white;
+    background-color: black;
+    font-size: 32px;
+    margin-left: 5px;
+}

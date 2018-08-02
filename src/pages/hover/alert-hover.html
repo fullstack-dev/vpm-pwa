@@ -1,0 +1,21 @@
+<div style="width:400px">
+  <div style="padding:15px">
+    <div class="hover-row">
+      <ion-avatar item-start class="avatar-div">
+        <img class="circle-pic" [src]="hoverData.patient.avatar">
+      </ion-avatar>
+      <div style="margin-left: 10px;">
+        <div class="hover-name">{{hoverData.patient.profile.firstName}}{{" "}}{{hoverData.patient.profile.lastName}}</div>
+        <div class="hover-property">{{hoverData.patient.mhiStatusList.questions[0].value}}</div>
+      </div>
+    </div>
+    <p style="color:#009688">Send {{hoverData.indicator.code}} alert</p>
+    <ion-textarea [(ngModel)]="message" class="hover-textarea" placeholder="Some text about {{hoverData.indicator.code}} alert"></ion-textarea>
+  </div>
+  <ion-row class="hover-action-row">
+    <button class="ion-button clear hover-button right-border" color="dark" (click)="close()">Cancel</button>
+
+    <button class="ion-button clear hover-button" color="dark" (click)="sendAlert()">Send</button>
+
+  </ion-row>
+</div>

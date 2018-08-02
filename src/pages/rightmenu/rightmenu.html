@@ -1,0 +1,82 @@
+<ion-content class="no-scroll">
+	<!-- Top Menu -->
+	<div class="menu-div">
+		<div tappable ion-item class="menu_item-div" (click)="goToHealthWizzPage()">Health Wizz</div>
+		<div tappable ion-item class="menu_item-div" (click)="goToPatientsPage()">Patients</div>
+		<div tappable ion-item class="menu_item-div" (click)="goToSendAlertPage()">Send Alert</div>
+		<div tappable ion-item class="menu_item-div" (click)="goToAppointmentsPage()">Appointments</div>
+
+		<!-- commented for demo -->
+		<!-- <ion-item class="search_item-div">
+			<ion-input type="text" placeholder="search"></ion-input>
+			<ion-icon name="search" item-end></ion-icon>
+		</ion-item>
+
+		<ion-icon name="notifications-outline" item-start class="notification-icon"></ion-icon> -->
+		<div style="flex: 1 1 auto"></div>
+
+		<div class="menu_item-div-selected" style="margin-left: 20px;">{{userName}}</div>
+	</div>
+
+	<ion-scroll scrollY="true" class="theroot">
+		<div class="body-div">
+			<div class="list-div">
+				<ion-list class="group-list">
+					<ion-item *ngFor="let challenge of challenges" [ngClass]="{selectedTemplate: challenge.id === currentId}">
+						<ion-label>{{challenge.name}}({{challenge.campaignInfo.circleInfo.members - 1}})</ion-label>
+					</ion-item>
+				</ion-list>
+				<!-- <div (click)="goToEditListPage()" class="editList-div">Edit list > </div> -->
+			</div>
+
+			<div class="result-div">
+				<ion-card id="loginCard">
+					<ion-card-header>
+						Health Wizz
+					</ion-card-header>
+					<form #ProfileForm="ngForm" (submit)="updateProfile()">
+						<ion-list>
+
+							<ion-item class="login-card-item login-card-input">
+								<!-- <ion-label stacked>Name</ion-label> -->
+								<ion-input type="text" placeholder="Name" name="name" [(ngModel)]="name" disabled clearInput></ion-input>
+							</ion-item>
+							<ion-item class="login-card-item login-card-input">
+								<!-- <ion-label stacked>Email</ion-label> -->
+								<ion-input type="text" placeholder="Email" name="email" [(ngModel)]="email" disabled clearInput></ion-input>
+							</ion-item>
+
+							<!-- <ion-item class="login-card-item login-card-input">
+								<ion-label stacked>Password</ion-label>
+								<ion-input type="password" name="password" [(ngModel)]="newProfile.password" required></ion-input>
+							</ion-item>
+
+							<ion-item class="login-card-item login-card-input">
+								<ion-label stacked>New Password</ion-label>
+								<ion-input type="password" name="newpassword" [(ngModel)]="newProfile.newPassword" required></ion-input>
+							</ion-item>
+
+							<ion-item class="login-card-item login-card-input">
+								<ion-label stacked>Confirm Password</ion-label>
+								<ion-input type="password" name="repassword" [(ngModel)]="newProfile.rePassword" required></ion-input>
+							</ion-item> -->
+
+							<ion-item class="login-card-item">
+								<ion-row>
+
+									<!-- <button ion-button block outline type="submit" [disabled]="!ProfileForm.form.valid">Save</button> -->
+									<button ion-button block clear (click)="logout()">Log Out</button>
+									<button ion-button block clear (click)="cancel()">Back</button>
+								</ion-row>
+
+							</ion-item>
+
+						</ion-list>
+					</form>
+				</ion-card>
+
+			</div>
+		</div>
+	</ion-scroll>
+
+</ion-content>

@@ -1,0 +1,140 @@
+page-appointments {
+    .md .modal-wrapper {
+        left: 30%;
+        height: 80% !important;
+    }
+    .table-bordered>tbody>tr>td {
+        height: 75px !important;
+        background: white;
+    }
+}
+
+.disabledAppointment {
+    background: rgba(128, 128, 128, 0.35);
+}
+
+.editList-div {
+    font-size: 18px;
+    padding-left: 18px;
+}
+
+.managePatients-div {
+    font-size: 18px;
+}
+
+.monthMoving-div {
+    font-size: 15px;
+    width: 150px;
+}
+
+.calendarBody-div {
+    position: relative;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-top: 15px;
+}
+
+.calendarPart-div {
+    width: 67vw;
+}
+
+.monthview-selected[_ngcontent-c1] {
+    color: white;
+    background-color: #009EA9 !important;
+}
+
+.table-bordered[_ngcontent-c1]>thead[_ngcontent-c1]>tr[_ngcontent-c1]>th[_ngcontent-c1],
+.table-bordered[_ngcontent-c1]>tbody[_ngcontent-c1]>tr[_ngcontent-c1]>th[_ngcontent-c1],
+.table-bordered[_ngcontent-c1]>tfoot[_ngcontent-c1]>tr[_ngcontent-c1]>th[_ngcontent-c1],
+.table-bordered[_ngcontent-c1]>thead[_ngcontent-c1]>tr[_ngcontent-c1]>td[_ngcontent-c1],
+.table-bordered[_ngcontent-c1]>tbody[_ngcontent-c1]>tr[_ngcontent-c1]>td[_ngcontent-c1],
+.table-bordered[_ngcontent-c1]>tfoot[_ngcontent-c1]>tr[_ngcontent-c1]>td[_ngcontent-c1] {
+    border: 1px solid #ddd;
+    height: 90px;
+    vertical-align: middle !important;
+}
+
+.calendarRight-div {
+    padding-right: 5px;
+    width: 16vw;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+}
+
+.today-div {
+    height: 64px;
+    width: 100%;
+    background-color: #EFEFF4;
+    color: #009EA9;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    padding-top: 16px;
+}
+
+.appointment-div {
+    color: #737370;
+    font-size: 14px;
+    line-height: 19px;
+    padding-left: 10px;
+    padding-top: 5px;
+    height: 177px;
+}
+
+.add_appointment_btn {
+    color: black;
+    border-color: black;
+    width: 100%;
+    background: white
+}
+
+.startEvent-div {
+    color: #737370;
+    font-size: 14px;
+    line-height: 19px;
+    padding-left: 10px;
+    margin-top: 15px;
+}
+
+.usernameInputText {
+    height: 40px;
+    width: 100%;
+    border: 0.5px solid #8E8E93;
+    background-color: #FFFFFF;
+    margin-left: 10px;
+    margin-top: 20px;
+    display: block;
+}
+
+.usernameInput-div {
+    position: relative;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.addIcon {
+    eight: 40px;
+    width: 40px;
+    background-color: black;
+    margin-top: 20px;
+    border-radius: 10px;
+    margin-left: -8px;
+}
+
+.iconProperty {
+    color: white;
+    font-size: 37px;
+    padding-top: 2px;
+    padding-left: 10px;
+}
+
+.addAppointmentBtn {
+    margin-left: 8px; // width: 90%;
+    margin-top: 20px;
+}

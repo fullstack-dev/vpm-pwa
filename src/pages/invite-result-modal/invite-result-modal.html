@@ -1,0 +1,11 @@
+<ion-content padding>
+  <h3>Successes</h3>
+  <ion-list *ngFor="let item of success">
+    <p>{{item.name}}</p>
+  </ion-list>
+  <hr>
+  <h3>Fails</h3>
+  <ion-list *ngFor="let item of fails">
+    <p>{{item.name}}</p>
+  </ion-list>
+</ion-content>
